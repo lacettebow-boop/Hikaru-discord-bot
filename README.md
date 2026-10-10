@@ -1,0 +1,2 @@
+# Hikaru-discord-bot
+BOT
