@@ -1,0 +1,30 @@
+services:
+  - type: worker
+    name: hikaru-discord-bot
+    runtime: python
+    plan: starter
+    buildCommand: pip install -r requirements.txt
+    startCommand: python bot.py
+    disk:
+      name: hikaru-data
+      mountPath: /opt/render/project/src/data
+      sizeGB: 1
+    envVars:
+      - key: DISCORD_TOKEN
+        sync: false
+      - key: GEMINI_API_KEY
+        sync: false
+      - key: GEMINI_MODEL
+        value: gemini-3.8-flash
+      - key: BOT_PREFIX
+        value: "!"
+      - key: BOT_VERSION
+        value: "0.1.0"
+      - key: OWNER_IDS
+        value: ""
+      - key: DATABASE_PATH
+        value: /opt/render/project/src/data/hikaru.sqlite3
+      - key: SUPPORT_URL
+        value: ""
+      - key: INVITE_URL
+        value: ""
